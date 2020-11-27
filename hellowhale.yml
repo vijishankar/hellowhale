@@ -1,39 +1,39 @@
 ---
 apiVersion:apps/v1
-kind: Deployment
+kind:Deployment
 metadata:
-  name: hello-blue-whale
+  name:hello-blue-whale
 spec:
   replicas: 5
   selector:
     matchLabels:
-      app: hello-whale-app
-      version: blue
+      app:hello-whale-app
+      version:blue
   template:
     metadata:
-      name: hello-blue-whale-pod
+      name:hello-blue-whale-pod
       labels:
-        app: hello-whale-app
-        version: blue
+        app:hello-whale-app
+        version blue
     spec:
       containers:
-      - name: hello-whale-container
-        image: tutum/hello-world
-        imagePullPolicy: Always
+      - name:hello-whale-container
+        image:tutum/hello-world
+        imagePullPolicy:Always
         ports:
-        - containerPort: 80
+        - containerPort:80
 ---
-apiVersion: v1
-kind: Service 
+apiVersion:v1
+kind:Service 
 metadata:
-  name: hello-whale-svc
+  name:hello-whale-svc
   labels:
-    app: hello-whale-app
+    app:hello-whale-app
 spec:
   selector:
-    app: hello-whale-app
-    version: blue
-  type: NodePort
+    app:hello-whale-app
+    version:blue
+  type:NodePort
   ports:
   - nodePort: 31113
     port: 80
